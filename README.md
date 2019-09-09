@@ -2,7 +2,7 @@
 
 ## 1. Project Schedule
 ### Development Environment
-+ Web : Vuejs + Nodejs + MongoDB
++ Web : Vuejs + Vuetify + Nodejs + MongoDB
 + Block-chain : go-ethereum + Remix
 
 ### Main Implementation Function
@@ -38,16 +38,6 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration

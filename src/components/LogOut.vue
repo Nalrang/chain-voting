@@ -6,13 +6,13 @@
 <script>
 export default {
   name: "logout",
-  data() {
+  data () {
     return {
       
     };
   },
   methods: {
-    logout() {
+    logout () {
       this.$router.push('/login');
     }
   }

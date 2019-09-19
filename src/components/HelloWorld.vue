@@ -3,7 +3,6 @@
     <v-layout 
       text-center
       wrap
-      nav
       fill-height
     >
       <v-flex xs12>

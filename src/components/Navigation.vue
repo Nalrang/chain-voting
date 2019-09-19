@@ -1,0 +1,64 @@
+<template>
+  <v-content>
+  <v-toolbar >
+    <v-toolbar-title class="headline text-uppercase">
+      <v-menu 
+      offset-y 
+      left  
+      min-width="300px" 
+      open-on-hover
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn
+            color="primary"
+            dark
+            v-on="on"
+          >
+            Menu
+          </v-btn>
+        </template>
+        <div class="v-div-nav">
+        <v-list>
+          <v-list-item
+            v-for="(item, index) in items"
+            :key="index"
+            :to="item.link"
+          >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+        </div>
+      </v-menu>
+    </v-toolbar-title>
+    <v-spacer/>
+    {{this.$route.name}}
+    <v-spacer/>
+    <LogOut/>
+  </v-toolbar>
+  </v-content>
+</template>
+
+<script>
+import LogOut from '../components/LogOut';
+
+export default {
+  name: "navigation",
+  components: {
+    LogOut,
+  },
+  data: () => ({
+    items: [
+      { title: 'Home', link: '/' },
+      { title: 'My Vote', link: '/my-vote'},
+      { title: 'Voting Reg', link: '/register'},
+      { title: 'Voting Result', link: '/result'},
+    ],
+  }),
+};
+</script>
+
+<style>
+.v-div-nav {
+  left: 0px;
+}
+</style>

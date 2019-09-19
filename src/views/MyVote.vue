@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>This is an Home page</h1>
+  <div class="myvote">
+    <h1>This is an myvote page</h1>
   </div>
 </template>
 

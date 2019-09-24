@@ -1,20 +1,20 @@
 <template>
   <v-content>
-  <v-toolbar >
+  <v-toolbar elevation="1">
     <v-toolbar-title class="headline text-uppercase">
       <v-menu 
-      offset-y 
-      left  
-      min-width="300px" 
+      offset-y
+      left
+      min-width="300px"
       open-on-hover
       >
         <template v-slot:activator="{ on }">
           <v-btn
-            color="primary"
-            dark
+            color="#fff"
             v-on="on"
+            elevation="0"
           >
-            Menu
+          <v-icon dark>dehaze</v-icon>
           </v-btn>
         </template>
         <div class="v-div-nav">
@@ -48,7 +48,7 @@ export default {
   },
   data: () => ({
     items: [
-      { title: 'Home', link: '/' },
+      { title: 'Home', link: '/main' },
       { title: 'My Vote', link: '/my-vote'},
       { title: 'Voting Reg', link: '/register'},
       { title: 'Voting Result', link: '/result'},

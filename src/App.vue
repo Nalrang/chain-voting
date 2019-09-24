@@ -10,15 +10,24 @@
 
 <script>
 import Navigation from './components/Navigation';
+import {Auth} from './plugins/api'
 
 export default {
   name: 'App',
   components: {
     Navigation
   },
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      loggedIn: Auth.loggedIn()
+    }
+  },
+  created() {
+    Auth.onChange = loggedIn => {
+      console.log('[App.vue] onchage', loggedIn)
+      this.loggedIn = loggedIn
+    }
+  }
 };
 </script>
 

@@ -7,8 +7,7 @@
               <v-card-text>
                 <v-layout justify-center pt-2>
                   <v-avatar size="40px" color="pink">
-                    <v-icon dark></v-icon>
-                    <!-- <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar"> -->
+                    <v-icon color="white">lock</v-icon>
                   </v-avatar>
                 </v-layout>
                 <v-layout justify-center py-3>
@@ -47,39 +46,32 @@
 
 
 <script>
+import {Auth} from '../plugins/api'
+
 export default {
   name: "login",
   data() {
     return {
       isLoging: false,
-      email: "",
+      email: "test@test.com",
       emailRules: [
         v => !!v || "E-mail is required",
         v => /.+@.+/.test(v) || "E-mail must be valid"
       ],
-      password: "",
+      password: "123",
       passwordRules: [v => !!v || "Password is required"]
     };
   },
   methods: {
     submit() {
-      //console.log(this.email, this.password);
       if(this.account!='' && this.password!=''){
         this.toLogin();
       }
     },
     toLogin() {
-      /*
-  		let loginParam = {
-        account: this.email,
-        password_sha: this.password
-      }
-      */
-      this.isLoging = true;
-      
-      setTimeout( () => {
-        this.$router.push('/');
-      }, 1000)
+      Auth.login(this.email, this.password)
+      .then(() => this.$router.push(this.$route.query.redirect || '/main'))
+      .catch(() => this.err = true)
     }
     
   }

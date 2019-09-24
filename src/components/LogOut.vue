@@ -1,5 +1,5 @@
 <template>
-  <a block color="info" @click="logout">Log out</a>
+  <router-link block color="info" to="/logout" style="text-decoration: none">Log out</router-link>
 </template>
 
 
@@ -12,9 +12,7 @@ export default {
     };
   },
   methods: {
-    logout () {
-      this.$router.push('/login');
-    }
+
   }
 };
 </script>

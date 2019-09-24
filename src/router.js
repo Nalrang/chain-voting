@@ -1,7 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import {Auth} from './plugins/api'
 
 Vue.use(Router)
+
+const requireAuth = (to, from, next) => {
+  if (Auth.loggedIn()) return next()
+  next({
+    path: '/login',
+    query: { redirect: to.fullPath }
+  })
+}
 
 export default new Router({
   mode: 'history',
@@ -10,12 +19,28 @@ export default new Router({
     {
       path: '/login',
       name: 'Login',
-      component: () => import('./views/Login.vue')
+      component: () => import('./views/Login.vue'),
+      beforeEnter(to, from, next) {
+        if (!Auth.loggedIn()) return next()
+        next({
+          path: '/main',
+          query: { redirect: to.fullPath }
+        })
+      }
     },
     {
-      path: '/',
+      path: '/logout',
+      beforeEnter(to, from, next) {
+        Auth.logout()
+        .then(() =>  { next('/login') })
+        .catch(err => { console.log("logout error", err) })
+      }
+    },
+    {
+      path: '/main',
       name: 'Home',
-      component: () => import('./views/Home.vue')
+      component: () => import('./views/Home.vue'),
+      beforeEnter: requireAuth
     },
     {
       path: '/my-vote',

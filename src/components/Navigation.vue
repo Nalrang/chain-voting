@@ -4,9 +4,8 @@
     <v-toolbar-title class="headline text-uppercase">
       <v-menu 
       offset-y
-      left
       min-width="300px"
-      open-on-hover
+      style="left=0px absolute;"
       >
         <template v-slot:activator="{ on }">
           <v-btn
